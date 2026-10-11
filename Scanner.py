@@ -16,7 +16,7 @@ class ClamAVWin11GUI(ctk.CTk):
         self.geometry("700x530")
         self.resizable(False, False)
 
-        # Жесткий путь к директории ClamAV
+        
         self.clam_dir = r"D:\Programs\clamav"
 
         self.title_label = ctk.CTkLabel(
@@ -71,14 +71,14 @@ class ClamAVWin11GUI(ctk.CTk):
         )
         self.log_area.pack(pady=15, padx=20)
 
-        # Настройка цветовых тегов для консоли
+        
         self.log_area._textbox.tag_config("red", foreground="#FF4D4D")
         self.log_area._textbox.tag_config("green", foreground="#00FF66")
         self.log_area._textbox.tag_config("yellow", foreground="#FFCC00")
         self.log_area._textbox.tag_config("white", foreground="#E0E0E0")
 
     def log(self, text):
-        # Автоматический выбор цвета под события
+        
         color_tag = "white"
         if "FOUND" in text or (
             "Infected files:" in text and not "Infected files: 0" in text
@@ -121,7 +121,7 @@ class ClamAVWin11GUI(ctk.CTk):
         freshclam_exe = os.path.join(self.clam_dir, "freshclam.exe")
         clamscan_exe = os.path.join(self.clam_dir, "clamscan.exe")
 
-        # Флаг для скрытия окон фоновых процессов Windows
+        
         no_window = (
             subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
         )
